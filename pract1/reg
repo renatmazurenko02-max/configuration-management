@@ -1,0 +1,14 @@
+#!/bin/sh
+# Установить пользовательскую команду в /usr/local/bin.
+if [ "$#" -ne 1 ]; then
+    printf 'Usage: %s FILE\n' "$0" >&2
+    exit 1
+fi
+if [ ! -f "$1" ] || [ ! -r "$1" ]; then
+    printf 'Cannot read file: %s\n' "$1" >&2
+    exit 1
+fi
+name=$(basename -- "$1")
+mkdir -p /usr/local/bin || exit 1
+install -m 755 -- "$1" "/usr/local/bin/$name" || exit 1
+printf 'Installed: /usr/local/bin/%s\n' "$name"
