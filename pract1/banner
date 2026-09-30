@@ -1,0 +1,6 @@
+#!/bin/bash
+# Вывод переданного текста в рамке.
+text="$*"
+printf -v border '%*s' "$(( ${#text} + 2 ))" ''
+border=${border// /-}
+printf '+%s+\n| %s |\n+%s+\n' "$border" "$text" "$border"
