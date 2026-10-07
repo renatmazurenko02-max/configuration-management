@@ -38,7 +38,7 @@ sh task1.sh
 ```sh
 #!/bin/sh
 # Задача 2. Вывести пять протоколов с наибольшими номерами.
-awk '$2 ~ /^[0-9]+$/ {print $2, $1}' /etc/protocols | sort -nr | head -n 5
+awk '{print $2, $1}' /etc/protocols | sort -nr | head -n 5
 ```
 
 Запуск:
@@ -106,7 +106,7 @@ if [ ! -f "$1" ] || [ ! -r "$1" ]; then
     printf 'Cannot read file: %s\n' "$1" >&2
     exit 1
 fi
-LC_ALL=C grep -oE '[a-zA-Z_][a-zA-Z0-9_]*' < "$1" | LC_ALL=C sort -u
+LC_ALL=C grep -o '[a-zA-Z_][a-zA-Z0-9_]*' < "$1" | LC_ALL=C sort -u
 ```
 
 Тестовый файл [hello.c](hello.c):
