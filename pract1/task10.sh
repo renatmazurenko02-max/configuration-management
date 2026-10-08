@@ -8,7 +8,7 @@ fi
 cd -- "$1" || exit 1
 shopt -s nullglob dotglob
 
-for file in ./*.txt; do
+for file in ./*; do
     if [ -f "$file" ] && [ ! -s "$file" ]; then
         printf '%s\n' "${file#./}"
     fi
